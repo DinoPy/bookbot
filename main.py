@@ -1,7 +1,7 @@
 def main():
     book = load_book("./books/frankenstein.txt")
     print(count_words(book))
-    char_count(book)
+    print(char_count(book))
 
 
 def load_book(path):
@@ -14,7 +14,15 @@ def count_words(book):
 
 
 def char_count(book):
-    pass
+    char_count = {}
+    for char in book:
+        c = char.lower()
+        if c in char_count:
+            char_count[c] += 1
+        else:
+            char_count[c] = 1
+
+    return char_count
 
 
 main()
