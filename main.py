@@ -1,7 +1,12 @@
 def main():
-    book = load_book("./books/frankenstein.txt")
-    print(count_words(book))
-    print(char_count(book))
+    path = "frankenstein.txt"
+    book = load_book(f"./books/{path}")
+    count = count_words(book)
+    print(f"--- Begin report of books/{path} ---")
+    print(f"{count} words found in the document", end="\n")
+    cc = char_count(book)
+    print_char_count(cc)
+    print("--- End report ---")
 
 
 def load_book(path):
@@ -23,6 +28,12 @@ def char_count(book):
             char_count[c] = 1
 
     return char_count
+
+
+def print_char_count(char_count):
+    for char in char_count:
+        if char.isalpha():
+            print(f"The '{char}' character was found {char_count[char]} times")
 
 
 main()
